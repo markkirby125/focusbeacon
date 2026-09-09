@@ -1,0 +1,39 @@
+- name: bug
+  color: d73a4a
+  description: Something isn't working
+- name: enhancement
+  color: a2eeef
+  description: New feature or request
+- name: documentation
+  color: 0075ca
+  description: Improvements or additions to documentation
+- name: good first issue
+  color: 7057ff
+  description: Good for newcomers
+- name: wcag-2.2
+  color: 0e8a16
+  description: Related to WCAG 2.2 guidelines
+- name: focus-ring
+  color: fbca04
+  description: Related to the dual-contour focus ring
+- name: cursor-radar
+  color: d4c5f9
+  description: Related to the cursor radar / hotkey feature
+- name: tunnel-vision
+  color: bfddb2
+  description: Accessibility for peripheral field loss
+- name: forced-colors
+  color: b60205
+  description: High Contrast mode / forced-colors queries
+- name: reduced-motion
+  color: 5319e7
+  description: prefers-reduced-motion features
+- name: a11y
+  color: 0052cc
+  description: General accessibility
+- name: low-vision
+  color: 1d76db
+  description: Enhancements for low vision users
+- name: keyboard-nav
+  color: e99695
+  description: Keyboard navigation flows

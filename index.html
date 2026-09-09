@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FocusBeacon — WCAG 2.2 AAA Focus Indicator Demo</title>
+  <style>
+    :root {
+      --bg: #e8e8e8;
+      --panel: #ffffff;
+      --text: #222222;
+      --muted: #555555;
+      --accent: #0b5c9e;
+      --accent-text: #ffffff;
+      --border: #cccccc;
+      --radius: 6px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #000;
+      color: #fff;
+      padding: 8px 16px;
+      text-decoration: none;
+      z-index: 100;
+      transition: top 0.2s;
+    }
+
+    .skip-link:focus {
+      top: 0;
+      outline: 3px solid #fff;
+      outline-offset: 2px;
+    }
+
+    header {
+      background: var(--panel);
+      border-bottom: 1px solid var(--border);
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0 0 0.5rem;
+      font-size: clamp(1.75rem, 5vw, 2.5rem);
+    }
+
+    header p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    section {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    section h2 {
+      margin-top: 0;
+      font-size: 1.35rem;
+    }
+
+    .demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      margin: 1rem 0;
+    }
+
+    button, a.button, input[type="text"], input[type="email"], select, textarea {
+      font: inherit;
+      padding: 0.6rem 1rem;
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--panel);
+      color: var(--text);
+    }
+
+    button, a.button {
+      background: var(--accent);
+      color: var(--accent-text);
+      border-color: var(--accent);
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    button:hover, a.button:hover {
+      background: #084a7d;
+    }
+
+    input[type="text"]:focus, input[type="email"]:focus, select:focus, textarea:focus {
+      border-color: var(--accent);
+    }
+
+    a.link {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .scroll-box {
+      max-height: 160px;
+      overflow: auto;
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+      background: #f7f7f7;
+    }
+
+    .scroll-box p {
+      margin: 0 0 1rem;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 50;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: var(--panel);
+      padding: 2rem;
+      border-radius: var(--radius);
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-content h3 {
+      margin-top: 0;
+    }
+
+    .instructions {
+      background: #f0f7ff;
+      border-left: 4px solid var(--accent);
+      padding: 1rem 1.25rem;
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+
+    .instructions h3 {
+      margin-top: 0;
+      font-size: 1rem;
+    }
+
+    .instructions ul {
+      margin: 0;
+      padding-left: 1.25rem;
+    }
+
+    .instructions li {
+      margin-bottom: 0.5rem;
+    }
+
+    kbd {
+      background: #eee;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      padding: 2px 6px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.85em;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* Removing native focus for demonstration of our custom one */
+    body.focusbeacon-active :focus {
+      outline: none;
+    }
+
+    body.focusbeacon-active .skip-link:focus {
+      outline: 3px solid #fff;
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <header>
+    <h1>FocusBeacon</h1>
+    <p>A mathematically guaranteed high-contrast focus indicator designed for users with low vision, tunnel vision, and reduced contrast sensitivity.</p>
+  </header>
+
+  <main id="main">
+    <section class="instructions" aria-label="How to test this demo">
+      <h3>Try these interactions</h3>
+      <ul>
+        <li>Press <kbd>Tab</kbd> to move focus and see the dual-contour focus ring.</li>
+        <li>Press <kbd>Tab</kbd> once at the top of the page to reveal the skip link.</li>
+        <li>Double-tap <kbd>Ctrl</kbd> to trigger the Cursor Radar at your mouse pointer.</li>
+        <li>Tab rapidly or jump from the header to the footer to see the Saccade Animation.</li>
+        <li>Enable <strong>prefers-reduced-motion</strong> in your OS to see safe degradation.</li>
+        <li>Enable <strong>High Contrast Mode</strong> (Windows) or <strong>forced-colors</strong> in DevTools.</li>
+      </ul>
+    </section>
+
+    <section aria-label="Basic controls">
+      <h2>Basic Interactive Controls</h2>
+      <p>Tab through buttons, links, and form fields to see FocusBeacon track each focus target.</p>
+      <div class="demo-row">
+        <button type="button">Primary action</button>
+        <button type="button">Secondary action</button>
+        <a href="#main" class="button link">Skip to main</a>
+      </div>
+      <div class="demo-row">
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Type your name" />
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="you@example.com" />
+      </div>
+      <div class="demo-row">
+        <label for="role">Role:</label>
+        <select id="role">
+          <option>Developer</option>
+          <option>Designer</option>
+          <option>Product Manager</option>
+          <option>Accessibility Specialist</option>
+        </select>
+      </div>
+      <div class="demo-row">
+        <label for="feedback">Feedback:</label>
+        <textarea id="feedback" rows="3" cols="40" placeholder="Share your thoughts..."></textarea>
+      </div>
+      <p><a href="#footer" class="link">Jump to footer for a long focus jump</a></p>
+    </section>
+
+    <section aria-label="Scrolling container">
+      <h2>Overflow Escape</h2>
+      <p>FocusBeacon lives in a fixed overlay, so it remains visible even inside clipped or scrolling containers.</p>
+      <div class="scroll-box" tabindex="0" aria-label="Scrollable region with focusable items">
+        <p><a href="#main" class="link">First link inside scroll box</a></p>
+        <p><button type="button">Button inside scroll box</button></p>
+        <p><input type="text" placeholder="Input inside scroll box" /></p>
+        <p><a href="#main" class="link">Last link inside scroll box</a></p>
+        <p style="margin-bottom:0">Scroll this area to see the ring stay pinned to the focused element.</p>
+      </div>
+    </section>
+
+    <section aria-label="Modal dialog">
+      <h2>Focus Shift Detection</h2>
+      <p>Open this modal to trigger a large focus jump. Close it to return focus to the trigger button.</p>
+      <button type="button" id="open-modal">Open modal dialog</button>
+      <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1">
+        <div class="modal-content">
+          <h3 id="modal-title">Modal Dialog</h3>
+          <p>This dialog opened without taking focus automatically, but you can tab into it.</p>
+          <div class="demo-row">
+            <button type="button" id="close-modal">Close</button>
+            <button type="button">Another action</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="Feature summary">
+      <h2>What FocusBeacon Provides</h2>
+      <ul>
+        <li><strong>Dual-Contour Ring:</strong> pure white inner and pure black outer contours for universal contrast.</li>
+        <li><strong>Overflow Escape:</strong> bypasses <code>overflow: hidden</code> via a fixed DOM overlay.</li>
+        <li><strong>focus-visible Aware:</strong> activates only on keyboard navigation.</li>
+        <li><strong>Cursor Radar:</strong> double-tap <kbd>Ctrl</kbd> to locate the cursor.</li>
+        <li><strong>Focus Trail:</strong> optional breadcrumb halos for focus history.</li>
+        <li><strong>Saccade Animation:</strong> directional cue for large focus jumps.</li>
+        <li><strong>Skip-Link Beacon:</strong> extra visibility for skip-to-content links.</li>
+        <li><strong>Developer HUD:</strong> debug panel showing focus metadata.</li>
+        <li><strong>Reduced Motion Safe:</strong> respects <code>prefers-reduced-motion</code>.</li>
+        <li><strong>Forced Colors Support:</strong> remains visible in Windows High Contrast Mode.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer id="footer">
+    <p>FocusBeacon is open source under the MIT License. <a href="https://github.com/markkirby125/focusbeacon" class="link">View on GitHub</a></p>
+  </footer>
+
+  <script src="focusbeacon.js" data-focus-trail="5" data-focus-dev="true"></script>
+  <script>
+    const openBtn = document.getElementById('open-modal');
+    const closeBtn = document.getElementById('close-modal');
+    const modal = document.getElementById('modal');
+
+    openBtn.addEventListener('click', () => {
+      modal.classList.add('active');
+      closeBtn.focus();
+    });
+
+    closeBtn.addEventListener('click', () => {
+      modal.classList.remove('active');
+      openBtn.focus();
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+        openBtn.focus();
+      }
+    });
+  </script>
+</body>
+</html>

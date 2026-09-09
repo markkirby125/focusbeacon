@@ -1,0 +1,39 @@
+{
+  "name": "focusbeacon",
+  "version": "1.0.0",
+  "description": "Ultra-lightweight vanilla JS accessibility engine with a mathematically guaranteed high-contrast dual-contour focus ring and cursor radar.",
+  "main": "focusbeacon.js",
+  "files": [
+    "focusbeacon.js",
+    "focusbeacon.min.js",
+    "index.html",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "node build.js",
+    "test": "node --check focusbeacon.js",
+    "demo": "python3 -m http.server 8080"
+  },
+  "keywords": [
+    "accessibility",
+    "a11y",
+    "focus",
+    "focus-ring",
+    "wcag",
+    "low-vision",
+    "keyboard-navigation",
+    "cursor-radar",
+    "tunnel-vision"
+  ],
+  "author": "Mark Kirby <mark.kirby125@googlemail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/markkirby125/focusbeacon.git"
+  },
+  "bugs": {
+    "url": "https://github.com/markkirby125/focusbeacon/issues"
+  },
+  "homepage": "https://markkirby125.github.io/focusbeacon/"
+}

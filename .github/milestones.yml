@@ -1,0 +1,12 @@
+- title: v0.1
+  description: Core focus ring functionality and floating DOM overlay
+  state: open
+- title: v0.2
+  description: Cursor radar integration and reduced-motion safe degradation
+  state: open
+- title: v0.3
+  description: Focus Trail, saccade animations, and skip-link enhancements
+  state: open
+- title: v1.0
+  description: Full public release, Developer HUD, and CDN distribution
+  state: open
