@@ -29,20 +29,22 @@ The minimum possible contrast against *any* arbitrary sRGB background color is *
 
 ## Installation
 
-### Via Script Tag (CDN)
-
-```html
-<script src="https://cdn.jsdelivr.net/npm/focusbeacon@1.0.0/focusbeacon.min.js" async></script>
-```
-
-### Via NPM
+FocusBeacon is not yet published to npm, so there is no CDN or `npm install` path yet. Install from source:
 
 ```bash
-npm install focusbeacon
+git clone https://github.com/markkirby125/focusbeacon.git
+cd focusbeacon
+node build.js            # regenerates focusbeacon.min.js from focusbeacon.js
 ```
 
-```javascript
-import 'focusbeacon';
+```html
+<script src="focusbeacon.min.js" async></script>
+```
+
+Optional features are enabled with `data-` attributes on the same tag:
+
+```html
+<script src="focusbeacon.min.js" data-focus-trail="5" data-focus-dev="true" async></script>
 ```
 
 ## API Reference
