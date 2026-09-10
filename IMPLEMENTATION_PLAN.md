@@ -31,7 +31,7 @@ FocusBeacon relies on a pooled DOM overlay model. It intercepts `focusin`, `focu
 - `focusbeacon.min.js`: Minified production bundle.
 - `index.html`: The GitHub Pages demo and documentation.
 - `styles.css`: Optional CSS for the demo page.
-- `tests/focusbeacon.test.js`: Unit and integration tests.
+- `tests/focusbeacon.test.mjs`: Unit and integration tests.
 - `package.json`: NPM package metadata and build scripts.
 - `README.md`: Project documentation.
 - `LICENSE`: MIT License.
