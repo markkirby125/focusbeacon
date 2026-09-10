@@ -76,6 +76,17 @@ FocusBeacon relies on standard DOM APIs and `:focus-visible`. It works in all mo
 
 Contributions are welcome! Please check out the issue tracker and feel free to submit pull requests. Ensure you test your changes with various accessibility features enabled (like High Contrast mode and Reduced Motion).
 
+## Part of the Vision Apps toolkit
+
+FocusBeacon is one of four accessibility tools in the [Vision Apps](https://github.com/markkirby125/vision-apps) toolkit — small, dependency-light projects that reduce visual strain for low-vision, photophobic and astigmatic readers.
+
+| Project | What it does |
+| --- | --- |
+| [ChromaCalm](https://github.com/markkirby125/chromacalm) | Zero-install spectral notch filtering for photophobia, migraine and screen halation. |
+| [SoftContrast](https://github.com/markkirby125/softcontrast) | Anti-halation reading palettes built on APCA and OKLCH. |
+| [terminal-a11y](https://github.com/markkirby125/terminal-a11y) | Screen-reader, photophobia, braille and sensory-budget modes for the command line. |
+| **FocusBeacon** *(this repo)* | High-contrast dual-contour focus ring and a cursor radar for tunnel vision. |
+
 ## License
 
 MIT License. See [LICENSE](LICENSE) for details.
