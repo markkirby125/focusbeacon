@@ -143,9 +143,9 @@ FocusBeacon relies on a pooled DOM overlay model. It intercepts `focusin`, `focu
 - **Goal:** Finalize documentation and deployment.
 - **Files touched:** `README.md`, GitHub Actions
 - **Steps:**
-  1. Draft comprehensive README detailing clinical motivation, installation, API, and math guarantees.
+  1. Draft comprehensive README detailing the motivation, installation, API, and underlying math.
   2. Configure GitHub Pages deployment.
-- **Verification criteria:** The README provides clear setup instructions and clinical context.
+- **Verification criteria:** The README provides clear setup instructions and context.
 
 ## GitHub Project Setup
 ### Labels
