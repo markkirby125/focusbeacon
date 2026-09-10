@@ -77,3 +77,7 @@ Contributions are welcome! Please check out the issue tracker and feel free to s
 ## License
 
 MIT License. See [LICENSE](LICENSE) for details.
+
+## Sources
+- [W3C. Understanding SC 2.4.13: Focus Appearance (WCAG 2.2, Level AAA).](https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance.html)
+- [MDN. prefers-reduced-motion CSS media feature.](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion)
