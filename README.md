@@ -1,6 +1,12 @@
 # FocusBeacon
 
-**FocusBeacon** is an ultra-lightweight vanilla JavaScript accessibility engine that provides a mathematically guaranteed high-contrast dual-contour focus ring and a low-latency motion-safe Cursor Radar.
+**For keyboard users with tunnel vision, photophobia, or low contrast sensitivity — a focus ring you cannot lose.**
+
+**FocusBeacon** is an ultra-lightweight vanilla JavaScript accessibility engine that provides a mathematically guaranteed high-contrast dual-contour focus ring and a low-latency motion-safe Cursor Radar. By [Paul Kirby](https://github.com/markkirby125).
+
+*Updated: 2026-09-10*
+
+**Try it now: [FocusBeacon Interactive Demo](https://markkirby125.github.io/focusbeacon/).**
 
 ## Clinical Motivation
 
@@ -17,7 +23,7 @@ The minimum possible contrast against *any* arbitrary sRGB background color is *
 ## Features
 
 - **Dual-Contour Focus Ring:** Pure white inner and pure black outer rings.
-- **Overflow Escape:** Bypasses `overflow: hidden` and stacking context clipping via a detached floating DOM overlay.
+- **Overflow Escape:** The ring lives in a detached floating overlay, so `overflow: hidden` containers and stacking contexts can't clip it.
 - **focus-visible Aware:** Activates only on keyboard navigation, preserving standard mouse interaction.
 - **Cursor Radar:** Double-tap `Control` to project an expanding concentric reticle around the cursor.
 - **Focus Trail:** Optional breadcrumb halos showing recent focus history (`data-focus-trail`).
@@ -47,7 +53,7 @@ Optional features are enabled with `data-` attributes on the same tag:
 <script src="focusbeacon.min.js" data-focus-trail="5" data-focus-dev="true" async></script>
 ```
 
-## API Reference
+## API: data attributes and runtime control
 
 FocusBeacon initializes automatically when the script loads.
 
@@ -64,7 +70,7 @@ After initialization, `window.FocusBeacon` exposes:
 - `window.FocusBeacon.config`: the resolved configuration object.
 - `window.FocusBeacon.destroy()`: removes all injected DOM elements and event listeners.
 
-## Demo
+## Try the interactive demo
 
 Experience FocusBeacon in action: [FocusBeacon Interactive Demo](https://markkirby125.github.io/focusbeacon/)
 
@@ -72,13 +78,15 @@ Experience FocusBeacon in action: [FocusBeacon Interactive Demo](https://markkir
 
 FocusBeacon relies on standard DOM APIs and `:focus-visible`. It works in all modern browsers (Chrome, Firefox, Safari, Edge). It degrades safely on older browsers without polyfills.
 
+> FocusBeacon improves focus visibility. It is not a screen reader and does not replace assistive technology.
+
 ## Contributing
 
 Contributions are welcome! Please check out the issue tracker and feel free to submit pull requests. Ensure you test your changes with various accessibility features enabled (like High Contrast mode and Reduced Motion).
 
 ## Part of the Vision Apps toolkit
 
-FocusBeacon is one of four accessibility tools in the [Vision Apps](https://github.com/markkirby125/vision-apps) toolkit — small, dependency-light projects that reduce visual strain for low-vision, photophobic and astigmatic readers.
+FocusBeacon is the focus-visibility piece of the four-tool [Vision Apps](https://github.com/markkirby125/vision-apps) accessibility kit.
 
 | Project | What it does |
 | --- | --- |
