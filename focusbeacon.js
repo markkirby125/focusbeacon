@@ -218,6 +218,14 @@
         document.removeEventListener('keydown', handleKeyDown);
         document.removeEventListener('pointerdown', handlePointerDown);
 
+        if (mqlReducedMotion && handleMotionChange) {
+          if (mqlReducedMotion.removeEventListener) {
+            mqlReducedMotion.removeEventListener('change', handleMotionChange);
+          } else if (mqlReducedMotion.removeListener) {
+            mqlReducedMotion.removeListener(handleMotionChange);
+          }
+        }
+
         beacon = null;
         radar = null;
         trailContainer = null;
@@ -225,7 +233,10 @@
         devHud = null;
         styleElement = null;
         updateCallback = null;
+        mqlReducedMotion = null;
+        handleMotionChange = null;
         trailBuffer = [];
+        previousRect = null;
         delete window.FocusBeacon;
       }
     };

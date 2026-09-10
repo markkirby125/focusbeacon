@@ -9,9 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./focusbeacon
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -21,11 +18,14 @@ jobs:
         with:
           node-version: 20
 
-      - name: Syntax check
-        run: node --check focusbeacon.js
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
 
       - name: Build minified bundle
-        run: node build.js
+        run: npm run build
 
       - name: Verify minified bundle
         run: node --check focusbeacon.min.js
@@ -34,4 +34,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: focusbeacon-dist
-          path: focusbeacon/focusbeacon.min.js
+          path: focusbeacon.min.js
