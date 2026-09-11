@@ -31,7 +31,7 @@ FocusBeacon relies on a pooled DOM overlay model. It intercepts `focusin`, `focu
 - `focusbeacon.min.js`: Minified production bundle.
 - `index.html`: The GitHub Pages demo and documentation.
 - `styles.css`: Optional CSS for the demo page.
-- `tests/focusbeacon.test.js`: Unit and integration tests.
+- `tests/focusbeacon.test.mjs`: Unit and integration tests.
 - `package.json`: NPM package metadata and build scripts.
 - `README.md`: Project documentation.
 - `LICENSE`: MIT License.
@@ -98,7 +98,7 @@ FocusBeacon relies on a pooled DOM overlay model. It intercepts `focusin`, `focu
   3. Remove smooth transition glide from the focus beacon.
 - **Verification criteria:** Enabling reduced motion in OS settings removes the scaling animation and uses a static reticle for the radar, and instant teleportation for the focus ring.
 
-### Phase 7: Focus Trail (breadcrumb mode)
+### Phase 7: ✅ Focus Trail (breadcrumb mode)
 - **Goal:** Provide visual history of focus navigation.
 - **Files touched:** `focusbeacon.js`
 - **Steps:**
@@ -107,7 +107,7 @@ FocusBeacon relies on a pooled DOM overlay model. It intercepts `focusin`, `focu
   3. Render fading static halos at the previous positions.
 - **Verification criteria:** Tabbing rapidly leaves fading trailing rings at the previous elements.
 
-### Phase 8: Saccade Animation for Large Focus Jumps
+### Phase 8: ✅ Saccade Animation for Large Focus Jumps
 - **Goal:** Provide directional cues for large focus movements.
 - **Files touched:** `focusbeacon.js`
 - **Steps:**
@@ -115,7 +115,7 @@ FocusBeacon relies on a pooled DOM overlay model. It intercepts `focusin`, `focu
   2. If distance > 300px, render a rapid, brief directional line or trailing comet animation.
 - **Verification criteria:** Jumping from header to footer triggers a visible directional cue.
 
-### Phase 9: Skip-Link Beacon
+### Phase 9: ✅ Skip-Link Beacon
 - **Goal:** Highlight hidden skip-to-main-content links upon initial tab.
 - **Files touched:** `focusbeacon.js`
 - **Steps:**
@@ -123,7 +123,7 @@ FocusBeacon relies on a pooled DOM overlay model. It intercepts `focusin`, `focu
   2. Inject a persistent pulsing arrow in the top-left if activated.
 - **Verification criteria:** Focusing a skip link makes it highly visible with an added directional indicator.
 
-### Phase 10: Developer Accessibility HUD
+### Phase 10: ✅ Developer Accessibility HUD
 - **Goal:** Show focus debug information.
 - **Files touched:** `focusbeacon.js`
 - **Steps:**
@@ -131,7 +131,7 @@ FocusBeacon relies on a pooled DOM overlay model. It intercepts `focusin`, `focu
   2. If true, inject a floating panel displaying element tag, classes, tabindex, and focus method.
 - **Verification criteria:** Enabling dev mode shows the HUD panel updating on focus change.
 
-### Phase 11: Demo Page + CDN Distribution
+### Phase 11: ✅ Demo Page + CDN Distribution
 - **Goal:** Create an interactive showcase.
 - **Files touched:** `index.html`, `package.json`
 - **Steps:**
@@ -139,13 +139,13 @@ FocusBeacon relies on a pooled DOM overlay model. It intercepts `focusin`, `focu
   2. Prepare npm package structure.
 - **Verification criteria:** The demo page successfully loads and demonstrates all FocusBeacon features.
 
-### Phase 12: GitHub Pages + README
+### Phase 12: ✅ GitHub Pages + README
 - **Goal:** Finalize documentation and deployment.
 - **Files touched:** `README.md`, GitHub Actions
 - **Steps:**
-  1. Draft comprehensive README detailing clinical motivation, installation, API, and math guarantees.
+  1. Draft comprehensive README detailing the motivation, installation, API, and underlying math.
   2. Configure GitHub Pages deployment.
-- **Verification criteria:** The README provides clear setup instructions and clinical context.
+- **Verification criteria:** The README provides clear setup instructions and context.
 
 ## GitHub Project Setup
 ### Labels

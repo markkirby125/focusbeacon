@@ -1,60 +1,62 @@
 # FocusBeacon
 
-**FocusBeacon** is an ultra-lightweight vanilla JavaScript accessibility engine that provides a mathematically guaranteed high-contrast dual-contour focus ring and a low-latency motion-safe Cursor Radar.
+**A focus ring and cursor radar you cannot lose — for keyboard users with tunnel vision, photophobia, or low contrast sensitivity.**
 
-## Clinical Motivation
+Standard 16×16px cursors and 1px CSS focus rings vanish on high-resolution and ultrawide displays. For users with peripheral field loss, photophobia, or reduced contrast sensitivity, that means hunting for the insertion point or losing track of the active control entirely.
 
-Users with visual impairments—specifically peripheral field loss (tunnel vision from glaucoma and retinitis pigmentosa), photophobia, and reduced contrast sensitivity—face severe visual acquisition barriers in modern web applications. On high-resolution (4K/Retina) and ultrawide displays, standard 16×16px operating system cursors and subtle 1px CSS focus rings disappear from their narrow field of view.
+FocusBeacon is an ultra-lightweight vanilla JavaScript accessibility engine that draws a guaranteed-visible dual-contour focus ring and adds a motion-safe cursor radar on demand.
 
-### The WCAG 2.2 SC 2.4.13 Solution
+## Who is FocusBeacon for?
 
-FocusBeacon directly addresses the **WCAG 2.2 Level AAA Focus Appearance (SC 2.4.13)** requirement. Single-color focus rings inevitably fail on certain backgrounds. W3C Advisory Technique C40 recommends a dual-color focus indicator. FocusBeacon implements a concentric **Pure White (`#FFFFFF`) inner contour** paired with a **Pure Black (`#000000`) outer contour**.
+FocusBeacon is built for keyboard users who lose track of the active control on modern screens — especially people with **tunnel vision**, **peripheral field loss**, **photophobia**, or **reduced contrast sensitivity**. It also helps anyone working on high-resolution, ultrawide, or brightly lit displays where default 1 px focus rings disappear.
 
-### The Math Guarantee
+**[Try the interactive demo](https://markkirby125.github.io/focusbeacon/)** · **[Vision Apps](https://github.com/markkirby125/vision-apps)**
 
-The minimum possible contrast against *any* arbitrary sRGB background color is **4.58:1**, exceeding the WCAG 3:1 non-text requirement by 52.7%, and meeting the strict 4.5:1 text contrast standard (SC 1.4.3 Level AA). It guarantees universal visibility without the need for light/dark mode variations.
+*Updated: 2026-09-11*
 
-## Features
+## What FocusBeacon does
 
-- **Dual-Contour Focus Ring:** Pure white inner and pure black outer rings.
-- **Overflow Escape:** Bypasses `overflow: hidden` and stacking context clipping via a detached floating DOM overlay.
-- **focus-visible Aware:** Activates only on keyboard navigation, preserving standard mouse interaction.
-- **Cursor Radar:** Double-tap `Control` to project an expanding concentric reticle around the cursor.
-- **Focus Trail:** Optional breadcrumb halos showing recent focus history (`data-focus-trail`).
-- **Saccade Animation:** Directional cue for large focus jumps (>300px).
-- **Skip-Link Beacon:** Extra arrow indicator when skip-to-content links receive focus.
-- **Developer Accessibility HUD:** Floating debug panel with focus metadata.
-- **Reduced Motion Safe:** Fully respects `prefers-reduced-motion: reduce`, downgrading animations to instant, static high-contrast reticles.
-- **Forced Colors Support:** Retains visibility under Windows High Contrast Mode (`forced-colors: active`).
+- **Dual-Contour Focus Ring** — pure-white inner ring, pure-black outer ring. Minimum 4.58:1 contrast against any sRGB background.
+- **Overflow Escape** — detached floating overlay, so `overflow: hidden` and stacking contexts cannot clip it.
+- **focus-visible Aware** — activates only on keyboard navigation, preserving standard mouse interaction.
+- **Cursor Radar** — double-tap `Control` to project an expanding reticle around the cursor.
+- **Focus Trail** — breadcrumb halos for recent focus history (`data-focus-trail`).
+- **Saccade Animation** — directional cue for focus jumps >300px.
+- **Skip-Link Beacon** — extra arrow indicator when skip-to-content links receive focus.
+- **Developer Accessibility HUD** — floating debug panel with focus metadata.
+- **Reduced Motion Safe** — fully respects `prefers-reduced-motion: reduce`, downgrading animations to instant, static high-contrast reticles.
+- **Forced Colors Support** — retains visibility under Windows High Contrast Mode (`forced-colors: active`).
 
-## Installation
+## How do I install FocusBeacon?
 
-### Via Script Tag (CDN)
-
-```html
-<script src="https://cdn.jsdelivr.net/npm/focusbeacon@1.0.0/focusbeacon.min.js" async></script>
-```
-
-### Via NPM
+FocusBeacon is not yet on npm, so install from source:
 
 ```bash
-npm install focusbeacon
+git clone https://github.com/markkirby125/focusbeacon.git
+cd focusbeacon
+node build.js            # regenerates focusbeacon.min.js from focusbeacon.js
 ```
 
-```javascript
-import 'focusbeacon';
+```html
+<script src="focusbeacon.min.js" async></script>
 ```
 
-## API Reference
+Optional features are enabled with `data-` attributes on the same tag:
+
+```html
+<script src="focusbeacon.min.js" data-focus-trail="5" data-focus-dev="true" async></script>
+```
+
+## How do I control FocusBeacon at runtime?
 
 FocusBeacon initializes automatically when the script loads.
 
 Optional features can be enabled via `data-` attributes on the `<script>` tag:
 
-- `data-focus-trail="5"`: Enables Focus Trail mode, leaving breadcrumb halos on the last 5 focused elements.
-- `data-focus-dev="true"`: Enables the Developer Accessibility HUD, displaying tag, classes, `tabindex`, input method, and bounding rect.
+- `data-focus-trail="5"` — enables Focus Trail mode, leaving breadcrumb halos on the last 5 focused elements.
+- `data-focus-dev="true"` — enables the Developer Accessibility HUD, displaying tag, classes, `tabindex`, input method, and bounding rect.
 
-### Runtime Control
+### Runtime control
 
 After initialization, `window.FocusBeacon` exposes:
 
@@ -62,18 +64,38 @@ After initialization, `window.FocusBeacon` exposes:
 - `window.FocusBeacon.config`: the resolved configuration object.
 - `window.FocusBeacon.destroy()`: removes all injected DOM elements and event listeners.
 
-## Demo
+## Why does the dual-contour ring stay visible?
 
-Experience FocusBeacon in action: [FocusBeacon Interactive Demo](https://markkirby125.github.io/focusbeacon/)
+Single-color focus rings fail on some backgrounds. WCAG 2.2 Level AAA Focus Appearance (SC 2.4.13) and W3C Advisory Technique C40 recommend a dual-color focus indicator.
 
-## Browser Support
+FocusBeacon implements a concentric **pure white (`#FFFFFF`) inner contour** paired with a **pure black (`#000000`) outer contour**. The minimum possible contrast against any arbitrary sRGB background color is **4.58:1**, exceeding the WCAG 3:1 non-text requirement by 52.7% and meeting the strict 4.5:1 text contrast standard (SC 1.4.3 Level AA). It guarantees universal visibility without light/dark mode variations.
+
+## Which browsers are supported?
 
 FocusBeacon relies on standard DOM APIs and `:focus-visible`. It works in all modern browsers (Chrome, Firefox, Safari, Edge). It degrades safely on older browsers without polyfills.
 
+> FocusBeacon improves focus visibility. It is not a screen reader and does not replace assistive technology.
+
 ## Contributing
 
-Contributions are welcome! Please check out the issue tracker and feel free to submit pull requests. Ensure you test your changes with various accessibility features enabled (like High Contrast mode and Reduced Motion).
+Open an issue or submit a pull request. Test your changes with High Contrast mode and Reduced Motion enabled.
+
+## Part of the Vision Apps toolkit
+
+FocusBeacon is the focus-visibility piece of the four-tool [Vision Apps](https://github.com/markkirby125/vision-apps) accessibility kit.
+
+| Project | What it does |
+| --- | --- |
+| [ChromaCalm](https://github.com/markkirby125/chromacalm) | Zero-install spectral notch filtering for photophobia, migraine and screen halation. |
+| [SoftContrast](https://github.com/markkirby125/softcontrast) | Anti-halation reading palettes built on APCA and OKLCH. |
+| [terminal-a11y](https://github.com/markkirby125/terminal-a11y) | Screen-reader, photophobia, braille and sensory-budget modes for the command line. |
+| **FocusBeacon** *(this repo)* | High-contrast dual-contour focus ring and cursor radar for tunnel vision. |
 
 ## License
 
 MIT License. See [LICENSE](LICENSE) for details.
+
+## Sources
+
+- [W3C. Understanding SC 2.4.13: Focus Appearance (WCAG 2.2, Level AAA).](https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance.html)
+- [MDN. prefers-reduced-motion CSS media feature.](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion)

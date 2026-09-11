@@ -1,0 +1,7 @@
+# FocusBeacon
+
+> Ultra-lightweight vanilla JS focus-ring accessibility engine. By Paul Kirby.
+
+- Live demo: https://markkirby125.github.io/focusbeacon/
+- Repo: https://github.com/markkirby125/focusbeacon
+- Part of Vision Apps: https://github.com/markkirby125/vision-apps
