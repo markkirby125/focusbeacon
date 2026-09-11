@@ -1,10 +1,10 @@
 # FocusBeacon
 
-**A focus ring and cursor radar you cannot lose — for keyboard users with tunnel vision, photophobia, or low contrast sensitivity.**
+**A focus ring and cursor radar that's hard to lose — for keyboard users with tunnel vision, photophobia, or low contrast sensitivity.**
 
 Standard 16×16px cursors and 1px CSS focus rings vanish on high-resolution and ultrawide displays. For users with peripheral field loss, photophobia, or reduced contrast sensitivity, that means hunting for the insertion point or losing track of the active control entirely.
 
-FocusBeacon is an ultra-lightweight vanilla JavaScript accessibility engine that draws a guaranteed-visible dual-contour focus ring and adds a motion-safe cursor radar on demand.
+FocusBeacon is an ultra-lightweight vanilla JavaScript accessibility engine that draws a high-visibility dual-contour focus ring and adds a motion-safe cursor radar on demand.
 
 ## Who is FocusBeacon for?
 
@@ -68,7 +68,7 @@ After initialization, `window.FocusBeacon` exposes:
 
 Single-color focus rings fail on some backgrounds. WCAG 2.2 Level AAA Focus Appearance (SC 2.4.13) and W3C Advisory Technique C40 recommend a dual-color focus indicator.
 
-FocusBeacon implements a concentric **pure white (`#FFFFFF`) inner contour** paired with a **pure black (`#000000`) outer contour**. The minimum possible contrast against any arbitrary sRGB background color is **4.58:1**, exceeding the WCAG 3:1 non-text requirement by 52.7% and meeting the strict 4.5:1 text contrast standard (SC 1.4.3 Level AA). It guarantees universal visibility without light/dark mode variations.
+FocusBeacon implements a concentric **pure white (`#FFFFFF`) inner contour** paired with a **pure black (`#000000`) outer contour**. The minimum possible contrast against any arbitrary sRGB background color is **4.58:1**, exceeding the WCAG 3:1 non-text requirement by 52.7% and meeting the strict 4.5:1 text contrast standard (SC 1.4.3 Level AA). It is designed to stay visible against almost any sRGB background without light/dark mode variations.
 
 ## Which browsers are supported?
 

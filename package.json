@@ -1,7 +1,7 @@
 {
   "name": "focusbeacon",
   "version": "1.0.0",
-  "description": "Ultra-lightweight vanilla JS accessibility engine with a mathematically guaranteed high-contrast dual-contour focus ring and cursor radar.",
+  "description": "Ultra-lightweight vanilla JS accessibility engine with a high-contrast dual-contour focus ring and cursor radar.",
   "main": "focusbeacon.js",
   "files": [
     "focusbeacon.js",
