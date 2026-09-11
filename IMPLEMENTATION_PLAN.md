@@ -1,11 +1,11 @@
 # FocusBeacon — Implementation Plan
 
 ## Overview
-FocusBeacon is an ultra-lightweight (~2KB) vanilla JavaScript accessibility engine that provides a mathematically guaranteed high-contrast dual-contour focus ring, a low-latency motion-safe Cursor Radar, and container-clipping immunity. It is designed to assist users with visual impairments such as peripheral field loss (tunnel vision), photophobia, and reduced contrast sensitivity.
+FocusBeacon is an ultra-lightweight (~2KB) vanilla JavaScript accessibility engine that provides a high-contrast dual-contour focus ring, a low-latency motion-safe Cursor Radar, and container-clipping immunity. It is designed to assist users with visual impairments such as peripheral field loss (tunnel vision), photophobia, and reduced contrast sensitivity.
 
 ## Scope Definition
 ### In Scope
-- Dual-Contour Focus Ring (pure white inner, pure black outer) meeting WCAG 2.2 Level AAA SC 2.4.13.
+- Dual-Contour Focus Ring (pure white inner, pure black outer) designed to support WCAG 2.2 Level AAA SC 2.4.13.
 - Floating DOM overlay architecture to bypass `overflow: hidden` container clipping.
 - Integration with `:focus-visible` to respect mouse vs. keyboard interaction.
 - Cursor Radar functionality via double-tapping `Control`.
