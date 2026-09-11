@@ -6,11 +6,15 @@ Standard 16×16px cursors and 1px CSS focus rings vanish on high-resolution and 
 
 FocusBeacon is an ultra-lightweight vanilla JavaScript accessibility engine that draws a guaranteed-visible dual-contour focus ring and adds a motion-safe cursor radar on demand.
 
+## Who is FocusBeacon for?
+
+FocusBeacon is built for keyboard users who lose track of the active control on modern screens — especially people with **tunnel vision**, **peripheral field loss**, **photophobia**, or **reduced contrast sensitivity**. It also helps anyone working on high-resolution, ultrawide, or brightly lit displays where default 1 px focus rings disappear.
+
 **[Try the interactive demo](https://markkirby125.github.io/focusbeacon/)** · **[Vision Apps](https://github.com/markkirby125/vision-apps)**
 
-*Updated: 2026-09-10*
+*Updated: 2026-09-11*
 
-## Features
+## What FocusBeacon does
 
 - **Dual-Contour Focus Ring** — pure-white inner ring, pure-black outer ring. Minimum 4.58:1 contrast against any sRGB background.
 - **Overflow Escape** — detached floating overlay, so `overflow: hidden` and stacking contexts cannot clip it.
@@ -23,7 +27,7 @@ FocusBeacon is an ultra-lightweight vanilla JavaScript accessibility engine that
 - **Reduced Motion Safe** — fully respects `prefers-reduced-motion: reduce`, downgrading animations to instant, static high-contrast reticles.
 - **Forced Colors Support** — retains visibility under Windows High Contrast Mode (`forced-colors: active`).
 
-## Quick start
+## How do I install FocusBeacon?
 
 FocusBeacon is not yet on npm, so install from source:
 
@@ -43,7 +47,7 @@ Optional features are enabled with `data-` attributes on the same tag:
 <script src="focusbeacon.min.js" data-focus-trail="5" data-focus-dev="true" async></script>
 ```
 
-## API: data attributes and runtime control
+## How do I control FocusBeacon at runtime?
 
 FocusBeacon initializes automatically when the script loads.
 
@@ -60,13 +64,13 @@ After initialization, `window.FocusBeacon` exposes:
 - `window.FocusBeacon.config`: the resolved configuration object.
 - `window.FocusBeacon.destroy()`: removes all injected DOM elements and event listeners.
 
-## How the contrast guarantee works
+## Why does the dual-contour ring stay visible?
 
 Single-color focus rings fail on some backgrounds. WCAG 2.2 Level AAA Focus Appearance (SC 2.4.13) and W3C Advisory Technique C40 recommend a dual-color focus indicator.
 
 FocusBeacon implements a concentric **pure white (`#FFFFFF`) inner contour** paired with a **pure black (`#000000`) outer contour**. The minimum possible contrast against any arbitrary sRGB background color is **4.58:1**, exceeding the WCAG 3:1 non-text requirement by 52.7% and meeting the strict 4.5:1 text contrast standard (SC 1.4.3 Level AA). It guarantees universal visibility without light/dark mode variations.
 
-## Browser support
+## Which browsers are supported?
 
 FocusBeacon relies on standard DOM APIs and `:focus-visible`. It works in all modern browsers (Chrome, Firefox, Safari, Edge). It degrades safely on older browsers without polyfills.
 
